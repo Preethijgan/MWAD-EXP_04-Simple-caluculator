@@ -1,5 +1,5 @@
 # MWAD-EXP_04-Simple-caluculator
-## Date:
+## Date: 22-09-2025
 
 ## AIM
 To  develop a Simple Calculator using React.js with clean and responsive design, ensuring a smooth user experience across different screen sizes.
@@ -47,8 +47,176 @@ Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
 
+App.js
+```
+import React from "react";
+import Calculator from "./Calculator";
+
+function App() {
+  return (
+    <div>
+      <h2 style={{ textAlign: "center" }}>Simple React Calculator</h2>
+      <Calculator />
+    </div>
+  );
+}
+
+export default App;
+
+
+```
+
+Calculator.js
+```
+import React, { useState } from "react";
+import "./Calculator.css";
+
+function Calculator() {
+  const [input, setInput] = useState("");
+
+  const handleClick = (value) => {
+    setInput(input + value);
+  };
+
+  const handleClear = () => {
+    setInput("");
+  };
+
+  const handleEqual = () => {
+    try {
+      setInput(eval(input).toString()); 
+    } catch (error) {
+      setInput("Error");
+    }
+  };
+
+  return (
+    <div className="calculator">
+      <div className="display">{input || "0"}</div>
+      <div className="buttons">
+  <button className="number" onClick={() => handleClick("7")}>7</button>
+  <button className="number" onClick={() => handleClick("8")}>8</button>
+  <button className="number" onClick={() => handleClick("9")}>9</button>
+  <button className="operator" onClick={() => handleClick("/")}>/</button>
+
+  <button className="number" onClick={() => handleClick("4")}>4</button>
+  <button className="number" onClick={() => handleClick("5")}>5</button>
+  <button className="number" onClick={() => handleClick("6")}>6</button>
+  <button className="operator" onClick={() => handleClick("*")}>*</button>
+
+  <button className="number" onClick={() => handleClick("1")}>1</button>
+  <button className="number" onClick={() => handleClick("2")}>2</button>
+  <button className="number" onClick={() => handleClick("3")}>3</button>
+  <button className="operator" onClick={() => handleClick("-")}>-</button>
+
+  <button className="number zero" onClick={() => handleClick("0")}>0</button>
+  <button className="number" onClick={() => handleClick(".")}>.</button>
+  <button className="operator" onClick={() => handleClick("+")}>+</button>
+  
+  <button className="equal" onClick={handleEqual}>=</button>
+  <button className="clear" onClick={handleClear}>C</button>
+</div>
+   </div>
+  );
+}
+
+export default Calculator;
+
+
+```
+
+Calculator.css
+```
+.calculator {
+  width: 260px;
+  margin: 40px auto;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  background: #f9f9f9;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.display {
+  height: 50px;
+  background: #222;
+  color: #fff;
+  text-align: right;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+button {
+  height: 50px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button.equal {
+  background-color: orange;
+  grid-column: span 2; 
+}
+
+button.clear {
+  background-color: red;
+  grid-column: span 2; 
+}
+
+
+.number {
+  background: #e0e0e0;
+}
+.number:hover {
+  background: #cfcfcf;
+}
+
+
+.operator {
+  background: #4a90e2;
+  color: white;
+}
+.operator:hover {
+  background: #357ab7;
+}
+
+.equal {
+  background: #f39c12;
+  color: white;
+}
+.equal:hover {
+  background: #d68910;
+}
+
+.clear {
+  background: #e74c3c;
+  color: white;
+}
+.clear:hover {
+  background: #c0392b;
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+
+
+```
+
 
 ## OUTPUT
+<img width="1919" height="1079" alt="Screenshot 2025-09-22 214151" src="https://github.com/user-attachments/assets/79b96626-8a54-4231-b656-49b360e69299" />
+
 
 
 ## RESULT
